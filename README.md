@@ -1,6 +1,14 @@
 Impress-Progress-Bar
 ====================
 
+# UPDATE: 2023-10-29
+
+- I modified the project to use a gradient instead of a rectangle position. I realized that the rectangles are arranged in front of  the header and footer, which is not ideal. I changed the gradient implementation to an image instead.
+- To change the image, modify the `ProgressBar.xba` file and change the `ImageShape.GraphicURL` to point to your desired image. Also, modify the Height and Width if the image is not a square.
+- Added a checkbox to allow skipping the first slide.
+
+# ORIGINAL README
+
 Macro to add automatically a progress bar to your Impress presentation. Tanks to Leo Barichello we have now a dialog box and some customization options.
 
 How to install:

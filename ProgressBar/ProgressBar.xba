@@ -43,13 +43,10 @@ If thisComponent.supportsService(&quot;com.sun.star.drawing.GenericDrawingDocume
            oDrawPage = oDoc.DrawPages(n)  
            Factor = oDrawPage.Width / oDoc.DrawPages.Count
            &apos;Size and position
-           Size.Width = oDrawPage.Width
-           Size.Height = oDrawPage.Height * (oheight.Value/100)
-           Point.x = 0  
-           Point.y = 0  
-           if (oposition.State = 0) then
-	           Point.y = oDrawPage.Height - Size.Height  
-	       end if
+           Size.Width = oDrawPage.Height * (oheight.Value/100) ' Set height based on user input
+           Size.Height = oDrawPage.Height * (oheight.Value/100) ' Set height based on user input
+           Point.x = Factor * n ' Move the image from left to right based on slide number
+           Point.y = oDrawPage.Height - Size.Height ' Position at the bottom of the slide
            m = oDrawPage.getCount-1
            &apos;removing any previous progress bar, if exists  
            Do While (m &gt;= 0)  
@@ -59,31 +56,13 @@ If thisComponent.supportsService(&quot;com.sun.star.drawing.GenericDrawingDocume
                 End If  
                 m = m-1  
            Loop
-           &apos;creating the rectangle
-           RectangleShape = oDoc.createInstance(&quot;com.sun.star.drawing.RectangleShape&quot;)  
-           RectangleShape.CharWeight = com.sun.star.awt.FontWeight.BOLD  
-           RectangleShape.CharFontName = &quot;Arial&quot;  
-           RectangleShape.Size = Size  
-           RectangleShape.Position = Point  
-           RectangleShape.LineStyle = none        
-           RectangleShape.FillStyle = com.sun.star.drawing.FillStyle.GRADIENT
-           oGradient.Style = com.sun.star.awt.GradientStyle.LINEAR
-           oGradient.StartColor = RGB(oredfill.Value, ogreenfill.Value, obluefill.Value)
-           oGradient.EndColor = RGB(oredfill_to.Value, ogreenfill_to.Value, obluefill_to.Value)
-           oGradient.Angle = 900 ' 90 degrees
-           Percent = 100 * (n + 1) / oDoc.DrawPages.Count  
-           oGradient.Border = Percent
-           oGradient.XOffset = 0 
-           oGradient.YOffset = 0
-           oGradient.StartIntensity = 100
-           oGradient.EndIntensity = 100
-           RectangleShape.FillGradient = oGradient
-           RectangleShape.Name = &quot;Progress Bar Macro &quot; + (n+1)  
-           oDrawPage.add(RectangleShape) 
-           if (olabel.State=1) Then
-	           RectangleShape.String = &quot;&quot; + Percent + &quot;%&quot;
-	       end if
-	       
+           &apos;creating the image
+           ImageShape = oDoc.createInstance(&quot;com.sun.star.drawing.GraphicObjectShape&quot;)
+           ImageShape.Size = Size
+           ImageShape.Position = Point
+           ImageShape.GraphicURL = ConvertToURL(&quot;file:///home/lori/git/Impress-Progress-Bar/ProgressBar/icon-robot-dog-with-drone.png&quot;)
+           ImageShape.Name = &quot;Progress Bar Macro &quot; + (n+1)
+           oDrawPage.add(ImageShape)
       Next n  
  End If  
  End Sub  
