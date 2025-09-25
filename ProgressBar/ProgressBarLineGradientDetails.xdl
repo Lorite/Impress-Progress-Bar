@@ -5,7 +5,7 @@
   <dlg:style dlg:style-id="0" dlg:font-slant="italic"/>
  </dlg:styles>
  <dlg:bulletinboard>
-  <dlg:checkbox dlg:id="checkbox_label" dlg:tab-index="0" dlg:left="5" dlg:top="8" dlg:width="63" dlg:height="8" dlg:value="Show percentage label" dlg:checked="true"/>
+  <dlg:checkbox dlg:id="checkbox_label" dlg:tab-index="0" dlg:left="5" dlg:top="8" dlg:width="63" dlg:height="8" dlg:value="Show percentage label" dlg:checked="false"/>
   <dlg:text dlg:id="Label1" dlg:tab-index="1" dlg:left="5" dlg:top="22" dlg:width="69" dlg:height="9" dlg:value="Position (default is bottom):"/>
   <dlg:text dlg:id="Label2" dlg:tab-index="2" dlg:left="5" dlg:top="72" dlg:width="71" dlg:height="7" dlg:value="Fill colour (red, green, blue):"/>
   <dlg:text dlg:style-id="0" dlg:id="Label5" dlg:tab-index="3" dlg:left="2" dlg:top="140" dlg:width="79" dlg:height="8" dlg:value="Close this dialog when you finish."/>
@@ -19,6 +19,6 @@
   <dlg:numericfield dlg:id="red_fill_to" dlg:tab-index="11" dlg:left="5" dlg:top="110" dlg:width="12" dlg:height="8" dlg:decimal-accuracy="0" dlg:value="0" dlg:value-min="0" dlg:value-max="255" dlg:value-step="16"/>
   <dlg:numericfield dlg:id="green_fill_to" dlg:tab-index="12" dlg:left="20" dlg:top="110" dlg:width="12" dlg:height="8" dlg:decimal-accuracy="0" dlg:value="25" dlg:value-min="0" dlg:value-max="255" dlg:value-step="16"/>
   <dlg:numericfield dlg:id="blue_fill_to" dlg:tab-index="13" dlg:left="36" dlg:top="110" dlg:width="12" dlg:height="8" dlg:decimal-accuracy="0" dlg:value="101" dlg:value-min="0" dlg:value-max="255" dlg:value-step="16"/>
-  <dlg:checkbox dlg:id="checkbox_skip_first_slide" dlg:tab-index="14" dlg:left="5" dlg:top="129" dlg:width="100" dlg:height="8" dlg:value="Skip first slide" dlg:checked="false"/>
+  <dlg:checkbox dlg:id="checkbox_skip_first_slide" dlg:tab-index="14" dlg:left="5" dlg:top="129" dlg:width="100" dlg:height="8" dlg:value="Skip first slide" dlg:checked="true"/>
  </dlg:bulletinboard>
 </dlg:window>

@@ -71,7 +71,7 @@ If thisComponent.supportsService(&quot;com.sun.star.drawing.GenericDrawingDocume
            oGradient.StartColor = RGB(oredfill.Value, ogreenfill.Value, obluefill.Value)
            oGradient.EndColor = RGB(oredfill_to.Value, ogreenfill_to.Value, obluefill_to.Value)
            oGradient.Angle = 900 ' 90 degrees
-           Percent = 100 * (n + 1) / oDoc.DrawPages.Count  
+           Percent = 100 * n / (oDoc.DrawPages.Count-1)
            oGradient.Border = Percent
            oGradient.XOffset = 0 
            oGradient.YOffset = 0

@@ -6,6 +6,9 @@ BasicLibraries.LoadLibrary(&quot;Tools&quot;)
 oDialog1 = LoadDialog(&quot;ProgressBar&quot;, &quot;ProgressBarLineDetails&quot;)
 oDialog1.Execute()
  
+Dim skipFirstSlide As Boolean
+skipFirstSlide = oDialog1.GetControl(&quot;checkbox_skip_first_slide&quot;).State = 1
+
 &apos;Reading the controls
 olabel = oDialog1.GetControl(&quot;checkbox_label&quot;)
 oposition = oDialog1.GetControl(&quot;option_position&quot;)
@@ -31,11 +34,11 @@ If thisComponent.supportsService(&quot;com.sun.star.drawing.GenericDrawingDocume
       Dim Percent As Double
       
       &apos;Loop to create the rectangles  
-      For n = 0 To oDoc.DrawPages.Count-1  
+      For n = IIf(skipFirstSlide, 1, 0) To oDoc.DrawPages.Count-1  
            oDrawPage = oDoc.DrawPages(n)  
-           Factor = oDrawPage.Width / oDoc.DrawPages.Count
+           Factor = oDrawPage.Width / (oDoc.DrawPages.Count-1)
            &apos;Size and position
-           Size.Width = (n + 1) * Factor  
+           Size.Width = n * Factor  
            Size.Height = oDrawPage.Height * (oheight.Value/100)
            Point.x = 0  
            Point.y = 0  
@@ -61,7 +64,7 @@ If thisComponent.supportsService(&quot;com.sun.star.drawing.GenericDrawingDocume
            RectangleShape.FillStyle = com.sun.star.drawing.FillStyle.SOLID
            RectangleShape.FillColor = RGB(oredfill.Value, ogreenfill.Value, obluefill.Value)
            RectangleShape.Name = &quot;Progress Bar Macro &quot; + (n+1)  
-           Percent = 100 * (n + 1) / oDoc.DrawPages.Count  
+           Percent = 100 * n / (oDoc.DrawPages.Count-1)  
            oDrawPage.add(RectangleShape) 
            if (olabel.State=1) Then
 	           RectangleShape.String = &quot;&quot; + Percent + &quot;%&quot;
