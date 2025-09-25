@@ -1,10 +1,11 @@
 Impress-Progress-Bar
 ====================
 
-# UPDATE: 2023-10-29
+# UPDATE: 2025-09-25
 
+- I created 2 versions of the macro: one that uses a line (rectangle) and another that uses an image.
 - I modified the project to use a gradient instead of a rectangle position. I realized that the rectangles are arranged in front of  the header and footer, which is not ideal. I changed the gradient implementation to an image instead.
-- To change the image, modify the `ProgressBar.xba` file and change the `ImageShape.GraphicURL` to point to your desired image. Also, modify the Height and Width if the image is not a square.
+- To change the image, modify the `ProgressBarImage.xba` file and change the `ImageShape.GraphicURL` to point to your desired image. Also, modify the Height and Width if the image is not a square.
 - Added a checkbox to allow skipping the first slide.
 
 # ORIGINAL README
